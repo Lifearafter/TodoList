@@ -5,19 +5,15 @@ class TodoList extends Component {
   constructor(props){
     super(props)
     this.state = {
-      tasks: []
+      tasks: ['Why not', 'Hello Neighbor']
     }
   }
-  addToState = () => {
-    this.setState({
-      tasks: [...this.state.tasks, this.props.tasks]
-    })
-  }
+  
   render() {
     return (
       <div>
-      {this.state.tasks.map((task, index) => {
-        return <Task key={index} task={task}/>
+      {this.props.tasks.map((task, index) => {
+        return <Task task={task} key={index}/>
       })}
       </div>
     )
