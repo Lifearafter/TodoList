@@ -1,0 +1,18 @@
+#TodoList {
+  white-space: pre-wrap;
+  padding: 5vh;
+}
+#TextBox {
+  font-family: inherit;
+  margin-right: 10px;
+  width: 50%;
+  padding: 10px;
+  border-radius: 5px;
+}
+#AddTodo {
+  font-family: inherit;
+  padding: 10px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,15 @@
+#Task {
+  display: grid;
+  grid-template-columns: 1fr 0.15fr;
+  margin-bottom: 10px;
+}
+#Title {
+  margin-right: 15px;
+}
+#Delete {
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}

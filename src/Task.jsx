@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./Task.css";
 
 class Task extends Component {
   constructor(props) {
@@ -7,14 +8,17 @@ class Task extends Component {
   }
   render() {
     return (
-      <div>
-        <input
-          type="checkbox"
+      <div id="Task">
+        <span id="Title">{this.props.task.title}</span>
+
+        <button
+          id="Delete"
           onClick={() => {
             this.props.task.completed = true;
           }}
-        />
-        <span>{this.props.task.title}</span>
+        >
+          Delete
+        </button>
       </div>
     );
   }

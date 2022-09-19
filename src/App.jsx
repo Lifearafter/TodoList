@@ -1,5 +1,6 @@
-import TodoList from "./TodoList";
+import Task from "./Task";
 import React, { Component, createRef } from "react";
+import "./App.css";
 
 class App extends Component {
   constructor(props) {
@@ -7,20 +8,30 @@ class App extends Component {
     this.state = {
       tasks: [],
       title: "",
+      countEntries: 1,
     };
     this.refTextBox = createRef(null);
   }
   handleAddTodo = () => {
-    this.setState({
-      tasks: [
-        ...this.state.tasks,
-        { title: this.state.title, completed: false },
-      ],
-    });
-    this.refTextBox.current.value = "";
+    if (this.state.countEntries === 0) {
+      this.setState(
+        {
+          tasks: [
+            ...this.state.tasks,
+            { title: this.state.title, completed: false },
+          ],
+        },
+        () => {
+          this.setState({ countEntries: 1 });
+        }
+      );
+      this.refTextBox.current.value = "";
+    }
   };
   handleTextChange = (event) => {
-    this.setState({ title: event.target.value });
+    this.setState({ title: event.target.value }, () => {
+      this.setState({ countEntries: 0 });
+    });
   };
   handleRemoveCompleted = () => {
     this.setState(
@@ -36,16 +47,31 @@ class App extends Component {
   render() {
     return (
       <>
-        <TodoList tasks={this.state.tasks} />
-        <input
-          type="text"
-          onChange={this.handleTextChange}
-          ref={this.refTextBox}
-        />
-        <button onClick={this.handleAddTodo}>Add Todo</button>
-        <button onClick={this.handleRemoveCompleted}>
-          Remove Completed Todo's
-        </button>
+        <h1>To-Do App</h1>
+        <br />
+        <div>
+          <input
+            id="TextBox"
+            type="text"
+            placeholder="Enter a Task Here"
+            onChange={this.handleTextChange}
+            onClick={() => {
+              this.refTextBox.current.value = "";
+            }}
+            autoComplete="off"
+            ref={this.refTextBox}
+          />
+          <button onClick={this.handleAddTodo} id="AddTodo">
+            Add Todo
+          </button>
+
+          <div id="TodoList">
+            {this.state.tasks.map((task, index) => {
+              return <Task task={task} key={index} />;
+            })}
+          </div>
+          {/* <button onClick={this.handleRemoveCompleted}>Remove Todos</button> */}
+        </div>
       </>
     );
   }
