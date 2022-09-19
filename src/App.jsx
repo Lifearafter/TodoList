@@ -47,7 +47,7 @@ class App extends Component {
   render() {
     return (
       <>
-        <h1>To-Do App</h1>
+        <h2 id="Header">To-Do App</h2>
         <br />
         <div>
           <input
