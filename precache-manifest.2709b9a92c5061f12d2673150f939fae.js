@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/TodoList/static/js/2.08cba4b5.chunk.js"
   },
   {
-    "revision": "d7a70855f4c32e61df36b481fdc22f2e",
+    "revision": "9663a303dde013d1706cea87d87022f8",
     "url": "/TodoList/index.html"
   }
 ];
