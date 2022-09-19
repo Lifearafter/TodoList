@@ -15,6 +15,7 @@ class Task extends Component {
           id="Delete"
           onClick={() => {
             this.props.task.completed = true;
+            this.props.delFunc();
           }}
         >
           Delete

@@ -34,14 +34,14 @@ class App extends Component {
     });
   };
   handleRemoveCompleted = () => {
-    this.setState(
-      {
-        tasks: this.state.tasks.filter((task) => !task.completed),
-      },
-      () => {
-        console.log(this.state.tasks);
-      }
-    );
+    this.setState({
+      tasks: this.state.tasks.filter((task) => !task.completed),
+    });
+  };
+  handleSubmitKey = (event) => {
+    if (event.key === "Enter") {
+      this.handleAddTodo();
+    }
   };
 
   render() {
@@ -58,6 +58,7 @@ class App extends Component {
             onClick={() => {
               this.refTextBox.current.value = "";
             }}
+            onKeyPress={this.handleSubmitKey}
             autoComplete="off"
             ref={this.refTextBox}
           />
@@ -67,10 +68,15 @@ class App extends Component {
 
           <div id="TodoList">
             {this.state.tasks.map((task, index) => {
-              return <Task task={task} key={index} />;
+              return (
+                <Task
+                  delFunc={this.handleRemoveCompleted}
+                  task={task}
+                  key={index}
+                />
+              );
             })}
           </div>
-          {/* <button onClick={this.handleRemoveCompleted}>Remove Todos</button> */}
         </div>
       </>
     );
